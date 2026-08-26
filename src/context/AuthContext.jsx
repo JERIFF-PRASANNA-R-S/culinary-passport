@@ -1,139 +1,113 @@
 import { useState } from "react";
 import { AuthContext } from "./auth-context";
 
-const USERS_KEY = "culinaryUsersDB";
-const SESSION_KEY = "culinaryCurrentUser";
-
-function getUsers() {
-  return JSON.parse(localStorage.getItem(USERS_KEY)) || [];
-}
-
-function saveUsers(users) {
-  localStorage.setItem(USERS_KEY, JSON.stringify(users));
-}
+const SESSION_KEY = "culinaryToken";
+const USER_KEY = "culinaryCurrentUser";
+const API_BASE = "http://localhost:5000/api/auth";
 
 function getInitialUser() {
-  const sessionEmail = localStorage.getItem(SESSION_KEY);
-  if (!sessionEmail) return null;
-
-  const users = getUsers();
-  return users.find((u) => u.email === sessionEmail) || null;
+  const stored = localStorage.getItem(USER_KEY);
+  return stored ? JSON.parse(stored) : null;
 }
 
 export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(getInitialUser);
   const [loading] = useState(false);
 
-  function signup({ name, email, countryCode, phone, password }) {
-    const users = getUsers();
-    const exists = users.some(
-      (u) => u.email.toLowerCase() === email.toLowerCase()
-    );
-    if (exists) {
-      return {
-        success: false,
-        message: "An account with this email already exists.",
-      };
+  async function signup({ name, email, countryCode, phone, password }) {
+    try {
+      const res = await fetch(`${API_BASE}/signup`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, countryCode, phone, password }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        return { success: false, message: data.message || "Signup failed." };
+      }
+
+      localStorage.setItem(SESSION_KEY, data.token);
+      localStorage.setItem(USER_KEY, JSON.stringify(data.user));
+      setCurrentUser(data.user);
+
+      return { success: true };
+    } catch (err) {
+      console.error("Signup error:", err);
+      return { success: false, message: "Could not connect to server." };
     }
-
-    const newUser = {
-      name,
-      email,
-      countryCode,
-      phone,
-      password,
-      firstName: "",
-      lastName: "",
-      infoCompleted: false,
-      profile: null,
-      createdAt: new Date().toISOString(),
-    };
-
-    users.push(newUser);
-    saveUsers(users);
-
-    return { success: true };
   }
 
-  function login({ identifier, password }) {
-    const users = getUsers();
-    const found = users.find(
-      (u) =>
-        (u.email.toLowerCase() === identifier.toLowerCase() ||
-          u.name.toLowerCase() === identifier.toLowerCase()) &&
-        u.password === password
-    );
+  async function login({ identifier, password }) {
+    try {
+      const res = await fetch(`${API_BASE}/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ identifier, password }),
+      });
 
-    if (!found) {
-      return {
-        success: false,
-        message: "Invalid email/username or password.",
-      };
+      const data = await res.json();
+
+      if (!res.ok) {
+        return { success: false, message: data.message || "Login failed." };
+      }
+
+      localStorage.setItem(SESSION_KEY, data.token);
+      localStorage.setItem(USER_KEY, JSON.stringify(data.user));
+      setCurrentUser(data.user);
+
+      return { success: true, isNewUser: !data.user.infoCompleted };
+    } catch (err) {
+      console.error("Login error:", err);
+      return { success: false, message: "Could not connect to server." };
     }
-
-    localStorage.setItem(SESSION_KEY, found.email);
-    setCurrentUser(found);
-
-    return { success: true, isNewUser: !found.infoCompleted };
   }
 
-  function completeUserInfo(profileData) {
-    const users = getUsers();
-    const updated = users.map((u) =>
-      u.email === currentUser.email
-        ? {
-            ...u,
-            firstName: profileData.firstName,
-            lastName: profileData.lastName,
-            infoCompleted: true,
-            profile: profileData,
-          }
-        : u
-    );
-    saveUsers(updated);
+  async function completeUserInfo(profileData) {
+    try {
+      const res = await fetch(`${API_BASE}/complete-info`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          userId: currentUser.id,
+          firstName: profileData.firstName,
+          lastName: profileData.lastName,
+          profile: profileData,
+        }),
+      });
 
-    const updatedUser = updated.find((u) => u.email === currentUser.email);
-    setCurrentUser(updatedUser);
+      const data = await res.json();
+
+      if (res.ok) {
+        localStorage.setItem(USER_KEY, JSON.stringify(data.user));
+        setCurrentUser(data.user);
+      }
+    } catch (err) {
+      console.error("Complete-info error:", err);
+    }
   }
 
   function logout() {
     localStorage.removeItem(SESSION_KEY);
+    localStorage.removeItem(USER_KEY);
     setCurrentUser(null);
   }
 
-  function requestPasswordReset(email) {
-    const users = getUsers();
-    const found = users.find(
-      (u) => u.email.toLowerCase() === email.toLowerCase()
-    );
-    if (!found) {
-      return { success: false, message: "No account found with this email." };
-    }
-
-    const token = Math.random().toString(36).slice(2, 10);
-    localStorage.setItem(`resetToken_${email.toLowerCase()}`, token);
-
-    return { success: true, token };
+  // Forgot/reset password: not yet implemented on backend.
+  // Keeping these as stubs so ForgotPassword.jsx / ResetPassword.jsx don't crash.
+  function requestPasswordReset() {
+    return {
+      success: false,
+      message: "Password reset isn't available yet. Please contact support.",
+    };
   }
 
-  function resetPassword({ email, token, newPassword }) {
-    const storedToken = localStorage.getItem(
-      `resetToken_${email.toLowerCase()}`
-    );
-    if (!storedToken || storedToken !== token) {
-      return { success: false, message: "Invalid or expired reset link." };
-    }
-
-    const users = getUsers();
-    const updated = users.map((u) =>
-      u.email.toLowerCase() === email.toLowerCase()
-        ? { ...u, password: newPassword }
-        : u
-    );
-    saveUsers(updated);
-    localStorage.removeItem(`resetToken_${email.toLowerCase()}`);
-
-    return { success: true };
+  function resetPassword() {
+    return {
+      success: false,
+      message: "Password reset isn't available yet. Please contact support.",
+    };
   }
 
   return (

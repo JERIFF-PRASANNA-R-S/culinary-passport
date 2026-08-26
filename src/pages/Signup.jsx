@@ -67,13 +67,13 @@ function Signup() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setSuccessMsg("");
 
     if (!validate()) return;
 
-    const result = signup(form);
+    const result = await signup(form);
 
     if (!result.success) {
       setErrors({ form: result.message });

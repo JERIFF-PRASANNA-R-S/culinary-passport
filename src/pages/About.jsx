@@ -136,7 +136,7 @@ function About() {
               <span className="badge bg-warning text-dark px-3 py-2 mb-3">
                 👤 Meet the Creator
               </span>
-              <h2 className="fw-bold mb-3">Lena Sanita Jr.</h2>
+              <h2 className="fw-bold mb-3">Lena Sanita JR</h2>
               <p className="text-muted mb-2">
                 <strong>Age:</strong> 21
               </p>
@@ -148,7 +148,7 @@ function About() {
                 <strong>Currently:</strong> Pursuing an MBA
               </p>
               <p className="text-muted">
-                Lena created Culinary Passport by combining a background in
+                i created Culinary Passport by combining a background in
                 computer science with a passion for hospitality and food
                 culture. This project reflects that blend — a technical
                 platform built to celebrate the world's culinary traditions.

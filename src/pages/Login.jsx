@@ -15,7 +15,7 @@ function Login() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
 
@@ -24,7 +24,7 @@ function Login() {
       return;
     }
 
-    const result = login(form);
+    const result = await login(form);
 
     if (!result.success) {
       setError(result.message);
