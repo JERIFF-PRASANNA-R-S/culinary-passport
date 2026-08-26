@@ -3,7 +3,7 @@ import { AuthContext } from "./auth-context";
 
 const SESSION_KEY = "culinaryToken";
 const USER_KEY = "culinaryCurrentUser";
-const API_BASE = "http://localhost:5000/api/auth";
+const API_BASE = "https://culinary-passport.onrender.com/api/auth";
 
 function getInitialUser() {
   const stored = localStorage.getItem(USER_KEY);
