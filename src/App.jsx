@@ -7,6 +7,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Home from "./pages/Home";
 import Cuisines from "./pages/Cuisines";
 import Dishes from "./pages/Dishes";
+import DishDetail from "./pages/DishDetail";
 import About from "./pages/About";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -44,6 +45,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <Dishes />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/dishes/:id"
+            element={
+              <ProtectedRoute>
+                <DishDetail />
               </ProtectedRoute>
             }
           />

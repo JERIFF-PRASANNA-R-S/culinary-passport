@@ -62,7 +62,7 @@ const featuredDishes = [
     name: "Margherita Pizza",
     cuisine: "Italian",
     image:
-      "https://images.unsplash.com/photo-1548365328-8b849e6c7ea9?auto=format&fit=crop&w=700&q=85",
+      "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=700&q=85",
   },
   {
     name: "Sushi Platter",

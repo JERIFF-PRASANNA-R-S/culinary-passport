@@ -1,0 +1,171 @@
+.dish-detail-page {
+  background: #faf9f7;
+  min-height: 100vh;
+}
+
+/* HERO */
+.dish-detail-hero {
+  position: relative;
+  height: 380px;
+  overflow: hidden;
+}
+
+.dish-detail-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dish-detail-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.75), rgba(0,0,0,0.2));
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 24px 40px;
+}
+
+.back-link {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  margin-bottom: auto;
+  align-self: flex-start;
+  background: rgba(255,255,255,0.15);
+  padding: 8px 16px;
+  border-radius: 999px;
+  backdrop-filter: blur(6px);
+}
+
+.back-link:hover {
+  background: rgba(255,255,255,0.3);
+  color: #fff;
+}
+
+.dish-detail-cuisine {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  color: #fbd72b;
+  font-weight: 700;
+}
+
+.dish-detail-hero-overlay h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  margin: 6px 0 10px;
+}
+
+/* STAR RATING */
+.star-rating {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.star {
+  color: rgba(255,255,255,0.35);
+  font-size: 1.2rem;
+}
+
+.star.filled {
+  color: #fbd72b;
+}
+
+.rating-number {
+  margin-left: 8px;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+/* BODY */
+.dish-detail-body {
+  padding: 50px 0 80px;
+}
+
+.dish-detail-description {
+  font-size: 1.05rem;
+  color: #444;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.dish-detail-tag {
+  display: inline-block;
+  background: #fff2b8;
+  color: #a27a00;
+  padding: 5px 14px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+.section-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin-bottom: 18px;
+}
+
+/* INGREDIENTS */
+.ingredients-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ingredients-list li {
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.ingredients-list li::before {
+  content: "•";
+  color: #f9484a;
+  font-weight: 900;
+  margin-right: 10px;
+}
+
+/* PROCEDURE */
+.procedure-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: step;
+}
+
+.procedure-list li {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.step-number {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f9484a, #fbd72b);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.step-text {
+  padding-top: 4px;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* NOT FOUND */
+.dish-not-found {
+  text-align: center;
+  padding: 100px 20px;
+}

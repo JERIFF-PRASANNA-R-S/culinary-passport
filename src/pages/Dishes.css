@@ -153,6 +153,14 @@
   background: #faf9f7;
 }
 
+/* CARD LINK WRAPPER */
+.dish-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  height: 100%;
+}
+
 /* DISH CARD */
 .dish-card {
   background: #fff;

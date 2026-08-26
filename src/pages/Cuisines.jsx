@@ -23,6 +23,16 @@ const cuisines = [
     dishes: "Pizza • Pasta • Risotto",
   },
   {
+    name: "Chinese Cuisine",
+    code: "CN",
+    country: "China",
+    image:
+      "https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=1200&q=85",
+    description:
+      "A vast culinary tradition of bold stir-fries, dumplings, and regional specialties.",
+    dishes: "Peking Duck • Kung Pao Chicken • Dim Sum",
+  },
+  {
     name: "Japanese Cuisine",
     code: "JP",
     country: "Japan",
@@ -43,14 +53,14 @@ const cuisines = [
     dishes: "Tacos • Enchiladas • Guacamole",
   },
   {
-    name: "Korean Cuisine",
-    code: "KR",
-    country: "South Korea",
+    name: "French Cuisine",
+    code: "FR",
+    country: "France",
     image:
-      "https://images.unsplash.com/photo-1498654896293-37aacf113fd9?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=1200&q=85",
     description:
-      "Distinctive fermented foods, seasonings, rice dishes, and traditional Korean flavours.",
-    dishes: "Kimchi • Bibimbap • Bulgogi",
+      "Elegant culinary traditions featuring refined techniques, pastries, sauces, and regional dishes.",
+    dishes: "Croissant • Ratatouille • Crêpes",
   },
   {
     name: "Thai Cuisine",
@@ -63,14 +73,24 @@ const cuisines = [
     dishes: "Pad Thai • Tom Yum • Green Curry",
   },
   {
-    name: "French Cuisine",
-    code: "FR",
-    country: "France",
+    name: "Korean Cuisine",
+    code: "KR",
+    country: "South Korea",
     image:
-      "https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1498654896293-37aacf113fd9?auto=format&fit=crop&w=1200&q=85",
     description:
-      "Elegant culinary traditions featuring refined techniques, pastries, sauces, and regional dishes.",
-    dishes: "Croissant • Ratatouille • Crêpes",
+      "Distinctive fermented foods, seasonings, rice dishes, and traditional Korean flavours.",
+    dishes: "Kimchi • Bibimbap • Bulgogi",
+  },
+  {
+    name: "Spanish Cuisine",
+    code: "ES",
+    country: "Spain",
+    image:
+      "https://images.unsplash.com/photo-1534080564583-6be75777b70a?auto=format&fit=crop&w=1200&q=85",
+    description:
+      "Sun-soaked Mediterranean flavours built around rice, seafood, and shared small plates.",
+    dishes: "Paella • Tortilla Española • Churros",
   },
   {
     name: "Turkish Cuisine",
