@@ -1,0 +1,306 @@
+/* DISHES PAGE */
+
+.dishes-page {
+  color: #222;
+}
+
+/* HERO */
+.dishes-hero {
+  background: linear-gradient(135deg, #f9484a, #fbd72b);
+  padding: 80px 0 50px;
+  color: #fff;
+  text-align: center;
+}
+
+.dishes-hero-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.dishes-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+}
+
+.dishes-hero h1 {
+  font-size: 2.6rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.dishes-hero h1 span {
+  color: #fff2b8;
+}
+
+.dishes-hero p {
+  font-size: 1.05rem;
+  opacity: 0.95;
+  line-height: 1.6;
+}
+
+/* SEARCH BAR */
+.dishes-search-section {
+  background: #fff;
+  padding: 24px 0 0;
+}
+
+.search-bar-wrapper {
+  max-width: 520px;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #faf9f7;
+  border: 1px solid #e5e5e5;
+  border-radius: 999px;
+  padding: 10px 18px;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.search-bar-wrapper:focus-within {
+  border-color: #f9484a;
+  box-shadow: 0 4px 16px rgba(249, 72, 74, 0.15);
+}
+
+.search-icon {
+  font-size: 1rem;
+  margin-right: 10px;
+  opacity: 0.6;
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 0.95rem;
+  color: #222;
+}
+
+.search-input::placeholder {
+  color: #999;
+}
+
+.search-clear-btn {
+  border: none;
+  background: #eee;
+  color: #666;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.search-clear-btn:hover {
+  background: #f9484a;
+  color: #fff;
+}
+
+/* FILTER TABS */
+.dishes-filter-section {
+  background: #fff;
+  padding: 20px 0 26px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.filter-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.filter-tab {
+  border: 1px solid #ddd;
+  background: #fff;
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #444;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.filter-tab:hover {
+  border-color: #f9484a;
+  color: #f9484a;
+  transform: translateY(-2px);
+}
+
+.filter-tab.active {
+  background: linear-gradient(135deg, #f9484a, #fbd72b);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(249, 72, 74, 0.35);
+}
+
+/* GRID SECTION */
+.dishes-section {
+  padding: 60px 0 80px;
+  background: #faf9f7;
+}
+
+/* DISH CARD */
+.dish-card {
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.07);
+  animation: dishFadeIn 0.6s ease both;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.dish-card:hover {
+  transform: translateY(-8px) scale(1.015);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.16);
+}
+
+@keyframes dishFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* IMAGE */
+.dish-image-wrapper {
+  position: relative;
+  height: 210px;
+  overflow: hidden;
+}
+
+.dish-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.dish-card:hover .dish-image {
+  transform: scale(1.12) rotate(0.5deg);
+}
+
+.dish-image-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.55), transparent 65%);
+}
+
+.dish-tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(255, 255, 255, 0.92);
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #f9484a;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.dish-hover-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  background: rgba(0, 0, 0, 0.4);
+  transition: opacity 0.35s ease;
+}
+
+.dish-card:hover .dish-hover-content {
+  opacity: 1;
+}
+
+.dish-hover-content span {
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  border: 2px solid #fff;
+  padding: 8px 20px;
+  border-radius: 999px;
+  transform: translateY(8px);
+  transition: transform 0.35s ease;
+}
+
+.dish-card:hover .dish-hover-content span {
+  transform: translateY(0);
+}
+
+/* CONTENT */
+.dish-content {
+  padding: 20px 22px 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.dish-cuisine-label {
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  letter-spacing: 1px;
+  color: #f9484a;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.dish-content h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.dish-content p {
+  color: #666;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+/* NOT IN LIST MESSAGE */
+.no-dishes-msg {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666;
+}
+
+.no-dishes-icon {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.no-dishes-msg h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #f9484a;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.no-dishes-msg p {
+  font-size: 0.95rem;
+}
