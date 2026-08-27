@@ -1548,7 +1548,7 @@ export const dishes = [
     name: "Mapo Tofu",
     cuisineCode: "CN",
     cuisine: "Chinese",
-    image: "https://images.unsplash.com/photo-1582878826629-84c8b4b2019c?auto=format&fit=crop&w=1000&q=85",
+    image: "https://images.unsplash.com/photo-1",
     description: "Silken tofu in a fiery, numbing Sichuan chili-bean sauce.",
     tag: "Spicy",
     rating: 4.6,
